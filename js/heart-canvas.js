@@ -18,9 +18,9 @@ class HeartAnimation {
         this.frameCount = 0;
         this.baseGlow = 0;
 
-        this.NUM_PARTICLES = 2000;
-        this.RAIN_DURATION = 120;    // frames of raining
-        this.FORM_DURATION = 180;    // frames to assemble heart
+        this.NUM_PARTICLES = 3500;
+        this.RAIN_DURATION = 180;    // frames of raining (extended)
+        this.FORM_DURATION = 240;    // frames to assemble heart (extended)
 
         this.setupCanvas();
         window.addEventListener('resize', () => {
@@ -41,7 +41,7 @@ class HeartAnimation {
         this.canvas.height = h;
         this.centerX = w / 2;
         this.centerY = h / 2 - 30;
-        this.scale = Math.min(w, h) / 42;
+        this.scale = Math.min(w, h) / 48;
     }
 
     init() {
@@ -112,12 +112,14 @@ class HeartAnimation {
                 twinklePhase: Math.random() * Math.PI * 2,
 
                 // Motion
-                vx: 0,
+                vx: (Math.random() - 0.5) * 0.5,
                 vy: Math.random() * 3 + 2, // Fall speed
                 delay: Math.random() * this.RAIN_DURATION * 0.8, // Stagger rain start
 
                 // State
-                arrived: false
+                arrived: false,
+                bounceCount: 0,
+                splashing: false
             });
         }
     }
@@ -177,20 +179,56 @@ class HeartAnimation {
 
     updateRaining() {
         const h = this.canvas.height;
+        const baseY = h - 50;
 
         this.particles.forEach((p, i) => {
             if (this.frameCount < p.delay) return; // Still waiting
 
-            // Fall down
-            p.y += p.vy;
-            p.x += (Math.random() - 0.5) * 0.5; // Slight horizontal wobble
+            // Gravity and motion
+            if (!p.arrived) {
+                p.vy += 0.1; // Gravity acceleration
+                p.y += p.vy;
+                p.x += p.vx;
 
-            // Accumulate at the base
-            if (p.y >= h - 50) {
-                p.y = h - 50 + (Math.random() - 0.5) * 30;
-                p.x = p.gatherX + (Math.random() - 0.5) * 10;
-                p.vy = 0;
-                p.arrived = true;
+                // Horizontal air resistance
+                p.vx *= 0.99;
+            }
+
+            // Splash effect when hitting the base
+            if (!p.arrived && p.y >= baseY) {
+                p.splashing = true;
+                p.bounceCount++;
+
+                // First bounce - strong splash
+                if (p.bounceCount === 1) {
+                    p.vy = -(Math.random() * 4 + 2); // Bounce up
+                    p.vx = (Math.random() - 0.5) * 3; // Splash sideways
+                }
+                // Second bounce - weaker
+                else if (p.bounceCount === 2) {
+                    p.vy = -(Math.random() * 2 + 1);
+                    p.vx = (Math.random() - 0.5) * 2;
+                }
+                // Third bounce - settle
+                else if (p.bounceCount === 3) {
+                    p.vy = -(Math.random() * 0.5 + 0.3);
+                    p.vx = (Math.random() - 0.5) * 1;
+                }
+                // Finally settle at base
+                else {
+                    p.y = baseY + (Math.random() - 0.5) * 30;
+                    p.x = p.gatherX + (Math.random() - 0.5) * 10;
+                    p.vy = 0;
+                    p.vx = 0;
+                    p.arrived = true;
+                    p.splashing = false;
+                }
+            }
+
+            // Gentle settling motion for arrived particles
+            if (p.arrived) {
+                p.x += (Math.random() - 0.5) * 0.2;
+                p.y += (Math.random() - 0.5) * 0.2;
             }
         });
 
