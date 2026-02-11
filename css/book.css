@@ -1,0 +1,307 @@
+/* ═══════════════════════════════════════════════
+   BOOK COMPONENT - 3D Page Flip
+   ═══════════════════════════════════════════════ */
+
+.book-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+/* ── Book Container ── */
+.book {
+    position: relative;
+    width: 800px;
+    max-width: 90vw;
+    height: 500px;
+    perspective: 2000px;
+}
+
+/* ── Individual Page ── */
+.book-page {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    height: 100%;
+    transform-origin: left center;
+    transition: transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-style: preserve-3d;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Stacking: pages that haven't been flipped stack on the right */
+.book-page.stacked-right {
+    z-index: 1;
+    transform: rotateY(0deg);
+}
+
+/* Flipped page goes to the left */
+.book-page.flipped {
+    transform: rotateY(-180deg);
+    z-index: 10;
+}
+
+/* Currently flipping (top of stack) */
+.book-page.active-right {
+    z-index: 20;
+}
+
+/* ── Page Faces (Front & Back) ── */
+.page-front,
+.page-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 0 var(--radius-md) var(--radius-md) 0;
+    overflow: hidden;
+}
+
+.page-front {
+    background: linear-gradient(160deg, #1e1533 0%, #261942 100%);
+    border: 1px solid rgba(255, 107, 157, 0.15);
+    border-left: none;
+}
+
+.page-back {
+    background: linear-gradient(200deg, #1e1533 0%, #261942 100%);
+    border: 1px solid rgba(255, 107, 157, 0.15);
+    border-left: none;
+    transform: rotateY(180deg);
+}
+
+/* ── Left Page (visible, static) ── */
+.book-left-page {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(200deg, #1e1533 0%, #261942 100%);
+    border: 1px solid rgba(255, 107, 157, 0.15);
+    border-right: none;
+    border-radius: var(--radius-md) 0 0 var(--radius-md);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+}
+
+/* ── Book Spine Effect ── */
+.book::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 100%;
+    background: linear-gradient(180deg,
+            rgba(255, 107, 157, 0.3) 0%,
+            rgba(192, 132, 252, 0.3) 50%,
+            rgba(255, 107, 157, 0.3) 100%);
+    z-index: 50;
+    box-shadow: 0 0 15px rgba(255, 107, 157, 0.2);
+    border-radius: 3px;
+}
+
+/* ── Page Content: Photo Side (Left) ── */
+.page-photo {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+.page-photo .photo-frame {
+    width: 85%;
+    height: 70%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    border: 3px solid rgba(255, 107, 157, 0.3);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.page-photo .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Placeholder for when no image is provided */
+.page-photo .photo-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(192, 132, 252, 0.1));
+    gap: 12px;
+}
+
+.page-photo .photo-placeholder .placeholder-icon {
+    font-size: 3rem;
+    opacity: 0.5;
+}
+
+.page-photo .photo-placeholder .placeholder-text {
+    font-family: var(--font-handwriting);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.page-photo .photo-caption {
+    margin-top: 12px;
+    font-family: var(--font-handwriting);
+    font-size: 0.95rem;
+    color: var(--accent-pink-light);
+    text-align: center;
+}
+
+/* ── Page Content: Text Side (Right) ── */
+.page-text {
+    padding: 32px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.page-text .page-title {
+    font-family: var(--font-heading);
+    font-size: 1.8rem;
+    color: var(--accent-pink);
+    margin-bottom: 8px;
+}
+
+.page-text .page-date {
+    font-family: var(--font-handwriting);
+    font-size: 0.9rem;
+    color: var(--accent-gold);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.page-text .page-date::before {
+    content: '📅';
+    font-size: 0.85rem;
+}
+
+.page-text .page-content {
+    font-family: var(--font-handwriting);
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.9;
+}
+
+.page-text .page-emoji {
+    font-size: 2rem;
+    margin-top: 16px;
+}
+
+/* ── Cover Page ── */
+.book-cover-content {
+    text-align: center;
+    padding: 32px;
+}
+
+.book-cover-content .cover-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.book-cover-content .cover-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 12px;
+}
+
+.book-cover-content .cover-names {
+    font-family: var(--font-handwriting);
+    font-size: 1.3rem;
+    color: var(--accent-gold);
+    margin-bottom: 8px;
+}
+
+.book-cover-content .cover-subtitle {
+    font-family: var(--font-handwriting);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+/* ── Book Controls ── */
+.book-controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+}
+
+.book-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 50px;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    backdrop-filter: blur(10px);
+}
+
+.book-btn:hover {
+    border-color: var(--accent-pink);
+    background: rgba(255, 107, 157, 0.1);
+    transform: translateY(-2px);
+}
+
+.book-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.page-indicator {
+    font-family: var(--font-handwriting);
+    font-size: 1rem;
+    color: var(--text-muted);
+}
+
+/* ── Page number at bottom ── */
+.page-number {
+    position: absolute;
+    bottom: 16px;
+    font-family: var(--font-handwriting);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.page-front .page-number {
+    right: 20px;
+}
+
+.page-back .page-number {
+    left: 20px;
+}

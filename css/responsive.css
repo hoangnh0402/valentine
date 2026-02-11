@@ -1,0 +1,293 @@
+/* ═══════════════════════════════════════════════
+   RESPONSIVE DESIGN
+   ═══════════════════════════════════════════════ */
+
+/* ══════════════════════════════════════════════
+   TABLET (768px - 1023px)
+   ══════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+    :root {
+        --section-padding: 80px 0;
+    }
+
+    /* Entry Gate */
+    .gate-content {
+        padding: 36px 28px;
+    }
+
+    .gate-title {
+        font-size: 2rem;
+    }
+
+    /* Countdown */
+    .countdown-grid {
+        gap: 16px;
+    }
+
+    .countdown-card {
+        padding: 24px 12px;
+    }
+
+    /* Book */
+    .book {
+        width: 700px;
+        height: 440px;
+    }
+
+    .page-text {
+        padding: 24px 20px;
+    }
+
+    .page-text .page-title {
+        font-size: 1.5rem;
+    }
+
+    .page-text .page-content {
+        font-size: 0.95rem;
+    }
+
+    /* Letter */
+    .letter {
+        padding: 36px;
+    }
+}
+
+/* ══════════════════════════════════════════════
+   MOBILE (≤ 767px)
+   ══════════════════════════════════════════════ */
+@media (max-width: 767px) {
+    :root {
+        --section-padding: 60px 0;
+    }
+
+    html {
+        font-size: 15px;
+    }
+
+    /* Section titles */
+    .section-title {
+        font-size: 2rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 40px;
+    }
+
+    /* Entry Gate */
+    .gate-content {
+        padding: 32px 20px;
+        width: 95%;
+    }
+
+    .gate-icon {
+        font-size: 3rem;
+    }
+
+    .gate-title {
+        font-size: 1.6rem;
+    }
+
+    .gate-subtitle {
+        font-size: 1rem;
+    }
+
+    .question-text {
+        font-size: 1rem;
+    }
+
+    .date-input-group {
+        gap: 6px;
+    }
+
+    .date-field input {
+        width: 65px;
+        padding: 10px 6px;
+        font-size: 1.1rem;
+    }
+
+    .gate-btn {
+        padding: 12px 28px;
+        font-size: 0.95rem;
+    }
+
+    /* Countdown */
+    .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        max-width: 320px;
+    }
+
+    .countdown-card {
+        padding: 20px 12px;
+    }
+
+    .countdown-value {
+        font-size: 2.5rem;
+    }
+
+    /* Book - Mobile Layout */
+    .book {
+        width: 100%;
+        max-width: 380px;
+        height: auto;
+        min-height: 500px;
+        perspective: none;
+    }
+
+    /* On mobile, show single page at a time (no spread) */
+    .book-left-page {
+        display: none;
+    }
+
+    .book-page {
+        position: relative;
+        left: 0;
+        width: 100%;
+        min-height: 500px;
+        transform-origin: center center;
+    }
+
+    .page-front {
+        border-radius: var(--radius-md);
+    }
+
+    .page-back {
+        border-radius: var(--radius-md);
+    }
+
+    .book::before {
+        display: none;
+    }
+
+    /* Stack pages vertically on mobile */
+    .book-page:not(.active-mobile) {
+        display: none;
+    }
+
+    .book-page.active-mobile {
+        display: block;
+    }
+
+    .page-front .page-text {
+        padding: 24px 20px;
+    }
+
+    .page-photo .photo-frame {
+        width: 90%;
+        height: 200px;
+    }
+
+    /* Book controls */
+    .book-controls {
+        gap: 12px;
+    }
+
+    .book-btn {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+
+    /* Letter */
+    .letter-wrapper {
+        width: 95%;
+    }
+
+    .letter {
+        padding: 28px 20px;
+    }
+
+    .letter-greeting {
+        font-size: 1.6rem;
+    }
+
+    .letter-body {
+        font-size: 1rem;
+        line-height: 1.8;
+    }
+
+    .letter-signature {
+        font-size: 2rem;
+    }
+
+    /* Heart */
+    .heart-canvas-wrapper {
+        max-width: 350px;
+    }
+
+    .heart-text {
+        font-size: 2rem;
+    }
+
+    /* Music Player */
+    .music-player {
+        bottom: 16px;
+        right: 16px;
+        padding: 6px 12px 6px 6px;
+    }
+
+    .music-toggle {
+        width: 38px;
+        height: 38px;
+    }
+
+    .music-info {
+        max-width: 80px;
+    }
+
+    .music-now-playing {
+        font-size: 0.7rem;
+    }
+}
+
+/* ══════════════════════════════════════════════
+   SMALL MOBILE (≤ 380px)
+   ══════════════════════════════════════════════ */
+@media (max-width: 380px) {
+    .gate-content {
+        padding: 24px 16px;
+    }
+
+    .gate-title {
+        font-size: 1.4rem;
+    }
+
+    .date-field input {
+        width: 58px;
+        padding: 8px 4px;
+        font-size: 1rem;
+    }
+
+    .countdown-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        max-width: 280px;
+    }
+
+    .countdown-value {
+        font-size: 2rem;
+    }
+
+    .book {
+        max-width: 320px;
+        min-height: 440px;
+    }
+}
+
+/* ══════════════════════════════════════════════
+   LARGE DESKTOP (≥ 1400px)
+   ══════════════════════════════════════════════ */
+@media (min-width: 1400px) {
+    .book {
+        width: 900px;
+        height: 560px;
+    }
+
+    .countdown-grid {
+        max-width: 900px;
+    }
+
+    .letter {
+        padding: 56px;
+    }
+}

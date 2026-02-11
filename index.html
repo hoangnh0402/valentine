@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💕 Happy Valentine's Day - Dành Cho Em</title>
+    <meta name="description" content="Trang web Valentine đặc biệt dành cho người anh yêu nhất">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Inter:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sections.css">
+    <link rel="stylesheet" href="css/book.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- FLOATING PARTICLES BACKGROUND              -->
+    <!-- ═══════════════════════════════════════════ -->
+    <canvas id="particles-canvas"></canvas>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SECTION 1: ENTRY GATE                      -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="entry-gate" class="entry-gate">
+        <div class="gate-content">
+            <div class="gate-icon">💕</div>
+            <h1 class="gate-title">Chào Mừng Em Đến Nơi Đặc Biệt Này</h1>
+            <p class="gate-subtitle">Hãy chứng minh em là người anh yêu nhất...</p>
+            
+            <div class="gate-question">
+                <p class="question-text">✨ Ngày cưới của chúng ta là ngày nào? ✨</p>
+                <div class="date-input-group">
+                    <div class="date-field">
+                        <label for="gate-day">Ngày</label>
+                        <input type="number" id="gate-day" min="1" max="31" placeholder="DD">
+                    </div>
+                    <span class="date-separator">/</span>
+                    <div class="date-field">
+                        <label for="gate-month">Tháng</label>
+                        <input type="number" id="gate-month" min="1" max="12" placeholder="MM">
+                    </div>
+                    <span class="date-separator">/</span>
+                    <div class="date-field">
+                        <label for="gate-year">Năm</label>
+                        <input type="number" id="gate-year" min="2000" max="2030" placeholder="YYYY">
+                    </div>
+                </div>
+                <button id="gate-submit" class="gate-btn">
+                    <span>Mở Khóa Trái Tim</span>
+                    <span class="btn-icon">🔓</span>
+                </button>
+                <p id="gate-error" class="gate-error"></p>
+            </div>
+        </div>
+        <!-- Confetti canvas for success -->
+        <canvas id="confetti-canvas"></canvas>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- MAIN CONTENT (hidden until gate passes)    -->
+    <!-- ═══════════════════════════════════════════ -->
+    <main id="main-content" class="main-content hidden">
+
+        <!-- SECTION 2: COUNTDOWN TIMER -->
+        <section id="countdown-section" class="section countdown-section">
+            <div class="section-container">
+                <h2 class="section-title fade-in-up">
+                    <span class="title-icon">⏱️</span>
+                    Đếm Ngược Đến Ngày Valentine
+                </h2>
+                <p class="section-subtitle fade-in-up">Mỗi giây trôi qua là mỗi giây anh thêm yêu em...</p>
+                
+                <div class="countdown-grid fade-in-up">
+                    <div class="countdown-card">
+                        <div class="countdown-value" id="countdown-days">00</div>
+                        <div class="countdown-label">Ngày</div>
+                    </div>
+                    <div class="countdown-card">
+                        <div class="countdown-value" id="countdown-hours">00</div>
+                        <div class="countdown-label">Giờ</div>
+                    </div>
+                    <div class="countdown-card">
+                        <div class="countdown-value" id="countdown-minutes">00</div>
+                        <div class="countdown-label">Phút</div>
+                    </div>
+                    <div class="countdown-card">
+                        <div class="countdown-value" id="countdown-seconds">00</div>
+                        <div class="countdown-label">Giây</div>
+                    </div>
+                </div>
+
+                <div id="valentine-reached" class="valentine-reached hidden">
+                    <h2 class="reached-title">🎉 Happy Valentine's Day! 🎉</h2>
+                    <p class="reached-subtitle">Chúc mừng ngày tình nhân, em yêu! 💕</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: MEMORY BOOK -->
+        <section id="book-section" class="section book-section">
+            <div class="section-container">
+                <h2 class="section-title fade-in-up">
+                    <span class="title-icon">📖</span>
+                    Câu Chuyện Của Chúng Ta
+                </h2>
+                <p class="section-subtitle fade-in-up">Lật từng trang để nhớ lại những khoảnh khắc đẹp nhất...</p>
+                
+                <div class="book-wrapper fade-in-up">
+                    <div class="book" id="book">
+                        <!-- Pages will be generated by JS -->
+                    </div>
+                    <div class="book-controls">
+                        <button class="book-btn" id="prev-page">
+                            <span>◀</span> Trang trước
+                        </button>
+                        <span class="page-indicator" id="page-indicator">Trang 1 / 8</span>
+                        <button class="book-btn" id="next-page">
+                            Trang sau <span>▶</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: LOVE LETTER -->
+        <section id="letter-section" class="section letter-section">
+            <div class="section-container">
+                <h2 class="section-title fade-in-up">
+                    <span class="title-icon">💌</span>
+                    Lá Thư Tình Gửi Em
+                </h2>
+                
+                <div class="letter-wrapper fade-in-up">
+                    <div class="letter">
+                        <div class="letter-header">
+                            <p class="letter-date">Ngày 14 tháng 02 năm 2026</p>
+                            <p class="letter-greeting">Em yêu của anh,</p>
+                        </div>
+                        <div class="letter-body" id="letter-body">
+                            <!-- Typewriter text will be inserted here -->
+                        </div>
+                        <div class="letter-footer">
+                            <p class="letter-closing">Mãi yêu em,</p>
+                            <p class="letter-signature">Anh ❤️</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: HEART ANIMATION -->
+        <section id="heart-section" class="section heart-section">
+            <div class="section-container">
+                <h2 class="section-title fade-in-up">
+                    <span class="title-icon">❤️</span>
+                    Trái Tim Anh Dành Cho Em
+                </h2>
+                
+                <div class="heart-canvas-wrapper fade-in-up">
+                    <canvas id="heart-canvas"></canvas>
+                    <div id="heart-message" class="heart-message hidden">
+                        <p class="heart-text">I Love You</p>
+                        <p class="heart-subtext">Mãi mãi bên em 💕</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="site-footer">
+            <p>Made with ❤️ for the love of my life</p>
+            <p class="footer-year">Valentine 2026</p>
+        </footer>
+    </main>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- MUSIC PLAYER (Fixed position)              -->
+    <!-- ═══════════════════════════════════════════ -->
+    <div id="music-player" class="music-player hidden">
+        <button id="music-toggle" class="music-toggle" title="Bật/Tắt nhạc">
+            <span class="music-icon playing">🎵</span>
+            <span class="music-icon paused">🔇</span>
+        </button>
+        <div class="music-info">
+            <span class="music-now-playing" id="music-track-name">♪ Đang phát...</span>
+        </div>
+        <div class="music-bars">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════ -->
+    <!-- SCRIPTS                                    -->
+    <!-- ═══════════════════════════════════════════ -->
+    <script src="js/particles.js"></script>
+    <script src="js/entry-gate.js"></script>
+    <script src="js/countdown.js"></script>
+    <script src="js/book.js"></script>
+    <script src="js/love-letter.js"></script>
+    <script src="js/heart-canvas.js"></script>
+    <script src="js/music.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+/* ═══════════════════════════════════════════════
+   VALENTINE WEBSITE - DESIGN SYSTEM
+   Theme: "Cosmic Romance"
+   ═══════════════════════════════════════════════ */
+
+/* ── CSS Variables / Design Tokens ── */
+:root {
+    /* Background */
+    --bg-primary: #0a0a1a;
+    --bg-secondary: #1a1035;
+    --bg-gradient: linear-gradient(135deg, #0a0a1a 0%, #1a1035 50%, #0f0a2a 100%);
+    
+    /* Accents */
+    --accent-pink: #ff6b9d;
+    --accent-pink-light: #ff8fb8;
+    --accent-pink-dark: #e24577;
+    --accent-purple: #c084fc;
+    --accent-purple-light: #d4a5ff;
+    --accent-gold: #fbbf24;
+    --accent-rose: #f43f5e;
+    --accent-coral: #fb7185;
+    
+    /* Text */
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+    
+    /* Glass */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    
+    /* Spacing */
+    --section-padding: 100px 0;
+    --container-max: 1200px;
+    --container-padding: 0 24px;
+    
+    /* Transitions */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.4s ease;
+    --transition-slow: 0.8s ease;
+    
+    /* Border Radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 32px;
+    
+    /* Font Families */
+    --font-heading: 'Great Vibes', cursive;
+    --font-body: 'Inter', sans-serif;
+    --font-handwriting: 'Dancing Script', cursive;
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-gradient);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ── Scrollbar Styling ── */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-pink);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-pink-light);
+}
+
+/* ── Utility Classes ── */
+.hidden {
+    display: none !important;
+}
+
+.section-container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: var(--container-padding);
+}
+
+.section {
+    padding: var(--section-padding);
+    position: relative;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    text-align: center;
+    margin-bottom: 16px;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.section-title .title-icon {
+    -webkit-text-fill-color: initial;
+    margin-right: 8px;
+}
+
+.section-subtitle {
+    font-family: var(--font-handwriting);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    text-align: center;
+    color: var(--text-secondary);
+    margin-bottom: 60px;
+}
+
+/* ── Particles Canvas ── */
+#particles-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ── Selection ── */
+::selection {
+    background: var(--accent-pink);
+    color: white;
+}
