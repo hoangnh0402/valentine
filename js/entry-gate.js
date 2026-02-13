@@ -115,6 +115,7 @@ class EntryGate {
         setTimeout(() => {
             if (typeof musicPlayer !== 'undefined') {
                 musicPlayer.show();
+                musicPlayer.play();
             }
             if (typeof app !== 'undefined') {
                 app.initScrollAnimations();

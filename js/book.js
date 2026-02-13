@@ -26,7 +26,7 @@ class MemoryBook {
             {
                 title: 'Lần Đầu Gặp Nhau',
                 date: 'Ngày XX tháng XX năm 20XX',
-                content: 'Lần đầu anh nhìn thấy em, trái tim anh đã ngừng đập một nhịp. Em đẹp hơn bất cứ ai anh từng gặp, và nụ cười của em đã thay đổi cuộc đời anh mãi mãi...',
+                content: 'Vào khoảnh khắc đó, anh cảm thấy như Định Mệnh đang vẫy gọi anh, có gì đó không ngừng thôi thúc anh tiến tới. Khi gặp em trái tim anh như loạn nhịp và cố gắng theo đuổi em.....',
                 emoji: '💫',
                 image: null, // Thay bằng 'images/photo1.jpg' khi có ảnh
                 caption: 'Ngày đầu tiên đặc biệt'
@@ -34,7 +34,7 @@ class MemoryBook {
             {
                 title: 'Ngày Hẹn Hò Đầu Tiên',
                 date: 'Ngày XX tháng XX năm 20XX',
-                content: 'Anh nhớ lần đầu tiên chúng ta hẹn hò. Anh hồi hộp đến mức không ngủ được cả đêm trước đó. Nhưng khi gặp em, mọi lo lắng đều tan biến...',
+                content: 'Anh nhớ lần đầu tiên chúng ta hẹn hò. Anh hồi hộp đến mức không biết phải nói chuyện gì với em cả, chỉ biết ngốc nghếch dắt em đi loanh quanh những chỗ anh thích ở Đào Khê Thôn....',
                 emoji: '🌹',
                 image: null,
                 caption: 'Buổi hẹn đáng nhớ'
@@ -42,7 +42,7 @@ class MemoryBook {
             {
                 title: 'Khoảnh Khắc Tỏ Tình',
                 date: 'Ngày XX tháng XX năm 20XX',
-                content: 'Đó là ngày anh dũng cảm nhất — ngày anh nói với em rằng "Anh yêu em". Tim anh đập nhanh đến nghẹt thở, nhưng khi em mỉm cười đồng ý, cả thế giới bừng sáng...',
+                content: 'Đó là ngày anh dũng cảm nhất và cũng là ngày anh phát hiện ra Em có vị trí quan trọng trong trái tim anh. Anh thật sự rất sợ mất em vào khi đó. Anh quyết định bày tỏ lòng mình và em đã từ chối nhaaaaa, anh nhớ đó',
                 emoji: '💕',
                 image: null,
                 caption: 'Ngày anh nói yêu em'
@@ -50,7 +50,7 @@ class MemoryBook {
             {
                 title: 'Những Chuyến Đi Cùng Nhau',
                 date: 'Năm 20XX',
-                content: 'Cùng em đi khắp nơi, mỗi nơi đều trở nên đặc biệt chỉ vì có em bên cạnh. Từ những quán cà phê nhỏ đến những bãi biển xa xôi, mỗi kỉ niệm đều là viên ngọc quý...',
+                content: 'Cùng em đi khắp nơi, mỗi nơi trong Nghịch Thủy Hàn đều trở nên đặc biệt chỉ vì có em bên cạnh. Từ Đào Khê Thôn hay cánh đồng hoa cải vàng mà mình cùng lái chiếc xe cút cít đó',
                 emoji: '✈️',
                 image: null,
                 caption: 'Những bước chân phiêu lưu'
@@ -58,7 +58,7 @@ class MemoryBook {
             {
                 title: 'Ngày Cầu Hôn',
                 date: 'Ngày XX tháng XX năm 20XX',
-                content: 'Anh đã giữ chiếc nhẫn trong túi áo suốt cả tuần, tim muốn nhảy ra khỏi lồng ngực. Và khoảnh khắc em gật đầu "Có" — anh biết mình là người hạnh phúc nhất thế gian...',
+                content: 'Anh đã thực sự chờ đợi giây phút này, biết bao lời tỏ tình ngọt ngào, lời cầu hôn em cùng các nghi lễ nhưng em biết không, ở bên em, mọi thứ đều lu mờ hết thảy, bởi vì trong mắt anh, trong tâm trí anh chỉ có em thôi <3',
                 emoji: '💍',
                 image: null,
                 caption: 'Em đã nói CÓ!'
@@ -66,7 +66,7 @@ class MemoryBook {
             {
                 title: 'Ngày Cưới - 04/02/2026',
                 date: '04 tháng 02 năm 2026',
-                content: 'Ngày hạnh phúc nhất cuộc đời, khi em bước vào trong chiếc váy cưới trắng tinh khôi. Anh hứa sẽ yêu em, bảo vệ em, và đồng hành cùng em trọn đời...',
+                content: 'Đó là giây phút hạnh phúc nhất trong đời anh, khi có thể nắm lấy, đan từng ngón tay vào bàn tay mà anh từng mơ thấy. Đeo vào tay em chiếc nhẫn cưới, trái tim anh rung lên từng nhịp, khi chạm môi em..ưm nó thật ngọt có lẽ đây là vị ngọt của tình yêu ha <3 Và khi đó anh thành chồng, còn em là vợ anh... Anh nguyện dùng cả đời này để giữ lấy vị ngọt trên đôi môi đó, trân trọng nụ cười hạnh phúc của em.',
                 emoji: '💒',
                 image: null,
                 caption: 'Ngày trọng đại'

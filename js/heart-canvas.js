@@ -61,7 +61,7 @@ class HeartAnimation {
                     setTimeout(() => this.startAnimation(), 400);
                 }
             });
-        }, { threshold: 0.3 });
+        }, { threshold: 0.1 });
 
         observer.observe(this.section);
     }
@@ -135,6 +135,10 @@ class HeartAnimation {
 
     startAnimation() {
         if (this.isPlaying) return;
+        
+        // Ensure canvas is properly sized (it might have been 0x0 if initialized while hidden)
+        this.setupCanvas();
+        
         this.isPlaying = true;
         this.frameCount = 0;
 

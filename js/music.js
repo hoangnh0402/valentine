@@ -17,28 +17,32 @@ class MusicPlayer {
         // ──────────────────────────────────────────
         this.playlist = [
             {
-                src: 'music/track1.mp3',
-                name: 'Bài hát 1'
+                src: 'music/Bình Yên.mp3',
+                name: 'Bình Yên'
             },
             {
-                src: 'music/track2.mp3',
-                name: 'Bài hát 2'
+                src: 'music/Dễ thương.mp3',
+                name: 'Dễ thương'
             },
             {
-                src: 'music/track3.mp3',
-                name: 'Bài hát 3'
+                src: 'music/Hát Vang Rằng Em Yêu Anh.mp3',
+                name: 'Hát Vang Rằng Em Yêu Anh'
             },
             {
-                src: 'music/track4.mp3',
-                name: 'Bài hát 4'
-            },
-            {
-                src: 'music/track5.mp3',
-                name: 'Bài hát 5'
+                src: 'music/Ngày Đầu Tiên.mp3',
+                name: 'Ngày Đầu Tiên'
             }
         ];
 
+        this.shufflePlaylist();
         this.init();
+    }
+
+    shufflePlaylist() {
+        for (let i = this.playlist.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this.playlist[i], this.playlist[j]] = [this.playlist[j], this.playlist[i]];
+        }
     }
 
     init() {
@@ -89,9 +93,20 @@ class MusicPlayer {
                 this.playerEl.classList.remove('paused');
             }).catch(() => {
                 // Autoplay blocked - wait for user interaction
-                console.log('Autoplay bị chặn, click nút nhạc để phát');
+                console.log('Autoplay bị chặn, nhạc sẽ phát sau tương tác đầu tiên');
                 this.isPlaying = false;
                 this.playerEl.classList.add('paused');
+
+                // Add one-time listener to start music on first click anywhere
+                const startOnInteraction = () => {
+                    if (!this.isPlaying) {
+                        this.play();
+                    }
+                    document.removeEventListener('click', startOnInteraction);
+                    document.removeEventListener('touchstart', startOnInteraction);
+                };
+                document.addEventListener('click', startOnInteraction);
+                document.addEventListener('touchstart', startOnInteraction);
             });
         }
     }
