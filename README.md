@@ -3,7 +3,6 @@
 Website Valentine hiện đại, công nghệ nhưng lãng mạn dành cho vợ yêu.
 
 ## Tính năng
-- 🔐 Entry Gate - Xác nhận ngày cưới (04/02/2026)
 - ⏱️ Countdown - Đếm ngược đến Valentine 14/02/2026
 - 📖 Memory Book - Sách kỉ niệm với hiệu ứng lật trang 3D
 - 💌 Love Letter - Thư tình với typewriter effect
