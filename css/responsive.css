@@ -241,6 +241,88 @@
 }
 
 /* ══════════════════════════════════════════════
+   IPHONE 12/13/14 PRO MAX (428px width)
+   ══════════════════════════════════════════════ */
+@media (max-width: 430px) {
+    .gate-content {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .gate-title {
+        font-size: 1.5rem;
+    }
+
+    .date-input-group {
+        gap: 8px;
+    }
+
+    .date-field input {
+        width: 65px;
+        height: 45px;
+        font-size: 1.1rem;
+    }
+
+    .countdown-grid {
+        max-width: 320px;
+        gap: 12px;
+    }
+
+    .countdown-card {
+        padding: 15px 10px;
+    }
+
+    .countdown-value {
+        font-size: 2.2rem;
+    }
+
+    .book {
+        max-width: 100%;
+        margin: 0 auto;
+        min-height: 520px;
+    }
+
+    .book-wrapper {
+        padding: 0 10px;
+    }
+
+    .page-front .page-text {
+        padding: 20px 15px;
+    }
+
+    .page-title {
+        font-size: 1.4rem;
+    }
+
+    .page-content {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .page-photo .photo-frame {
+        height: 180px;
+    }
+
+    .letter-wrapper {
+        width: 92%;
+    }
+
+    .letter {
+        padding: 25px 15px;
+    }
+
+    .letter-body {
+        font-size: 0.95rem;
+    }
+
+    .music-player {
+        right: 12px;
+        bottom: 12px;
+        max-width: 150px;
+    }
+}
+
+/* ══════════════════════════════════════════════
    SMALL MOBILE (≤ 380px)
    ══════════════════════════════════════════════ */
 @media (max-width: 380px) {
